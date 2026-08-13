@@ -6,7 +6,7 @@
 
 <!-- Primary SEO -->
 <title>Zoly — Desarrollo de software, CRMs y automatización a medida</title>
-<meta name="description" content="Zoly diseña y desarrolla software a medida: MVPs en 30 días, CRMs, integraciones, bots de WhatsApp y automatización de procesos. Del desarrollo al deploy, con código propio." />
+<meta name="description" content="Software a medida en Argentina: MVPs en 30 días, CRMs, integraciones, bots de WhatsApp y automatización de procesos. Del desarrollo al deploy." />
 <meta name="keywords" content="desarrollo de software a medida, CRM a medida, automatización de procesos, MVP, bots WhatsApp, integraciones n8n, Kommo, landing pages, Argentina" />
 <meta name="author" content="Zoly" />
 <meta name="robots" content="index, follow, max-image-preview:large" />
@@ -36,7 +36,10 @@
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='512' height='512' viewBox='0 0 512 512'%3E%3Crect x='16' y='16' width='480' height='480' rx='118' fill='%230B0D10'/%3E%3Cpath d='M166 178 H346 L166 334 H346' stroke='%23F4F3EF' stroke-width='44' stroke-linecap='square' stroke-linejoin='miter'/%3E%3Cpath d='M166 178 H346' stroke='%2300C48C' stroke-width='44' stroke-linecap='square'/%3E%3C/svg%3E" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<!-- Fuentes: carga no bloqueante (mejora LCP / Core Web Vitals) -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" media="print" onload="this.media='all'" />
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" /></noscript>
 
 <!-- Structured data (JSON-LD) -->
 <script type="application/ld+json">
@@ -45,17 +48,42 @@
   "@type": "ProfessionalService",
   "@id": "https://zoly.com.ar/#organization",
   "name": "Zoly",
+  "alternateName": "Zoly Software",
+  "legalName": "Zoly",
   "url": "https://zoly.com.ar/",
   "image": "https://zoly.com.ar/og-image.png",
-  "logo": "https://zoly.com.ar/og-image.png",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://zoly.com.ar/logo.png",
+    "width": 512,
+    "height": 512,
+    "caption": "Zoly"
+  },
+  "slogan": "Software y automatización a medida. Del desarrollo al deploy.",
   "description": "Zoly diseña y desarrolla software a medida: MVPs, CRMs, integraciones, bots y automatización de procesos. Del desarrollo al deploy.",
   "email": "hola@zoly.com.ar",
   "priceRange": "$$",
+  "currenciesAccepted": "ARS, USD",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "AR",
+    "addressRegion": "Buenos Aires"
+  },
   "areaServed": [
     { "@type": "Country", "name": "Argentina" },
     { "@type": "AdministrativeArea", "name": "Latinoamérica" }
   ],
+  "availableLanguage": ["es"],
+  "contactPoint": [{
+    "@type": "ContactPoint",
+    "contactType": "sales",
+    "email": "hola@zoly.com.ar",
+    "url": "https://zoly.com.ar/#contacto",
+    "areaServed": ["AR", "Latinoamérica"],
+    "availableLanguage": ["es"]
+  }],
   "knowsAbout": ["Desarrollo de software a medida", "CRM", "Automatización de procesos", "Bots de WhatsApp", "Integraciones de sistemas", "MVP", "n8n", "Kommo"],
+  "serviceType": ["Desarrollo de software a medida", "Desarrollo de CRM", "Automatización de procesos", "Integraciones y APIs", "Chatbots y asistentes con IA", "Sitios web y landing pages"],
   "sameAs": [],
   "makesOffer": [
     { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Desarrollo a medida y MVPs" } },
@@ -75,6 +103,97 @@
   "name": "Zoly",
   "inLanguage": "es-AR",
   "publisher": { "@id": "https://zoly.com.ar/#organization" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": "https://zoly.com.ar/#faq",
+  "inLanguage": "es-AR",
+  "isPartOf": { "@id": "https://zoly.com.ar/#organization" },
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Qué hace Zoly?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Zoly es un equipo argentino de desarrollo de software a medida. Construimos MVPs, CRMs, integraciones entre sistemas, bots de WhatsApp y automatizaciones de procesos: desde el primer boceto hasta el deploy en producción, con código propio y sin plantillas genéricas."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto tarda desarrollar un MVP?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nuestro objetivo es tener un MVP funcional en producción en 30 días. El plazo real depende del alcance que definimos en la etapa de descubrimiento: recortamos a lo mínimo que sirve para validar la idea con usuarios reales, y el resto se construye después, ya sobre datos concretos."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto cuesta desarrollar un software a medida?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Depende del alcance, y por eso trabajamos con presupuesto cerrado por proyecto. Después de una primera consulta sin cargo te pasamos un plan con etapas, entregables y precio, para que sepas desde el día uno qué incluye y qué no."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Por qué un CRM a medida y no uno enlatado?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Un CRM enlatado te obliga a adaptar tu proceso de ventas al software y a pagar licencias por usuario para siempre. Uno a medida se arma sobre tu pipeline real, integra las herramientas que ya usás y no tiene costo por asiento. Si tu operación entra bien en una plataforma estándar te lo decimos: también implementamos y configuramos Kommo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué es la automatización de procesos y qué puedo automatizar?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Es reemplazar tareas manuales y repetitivas por flujos que se ejecutan solos: cargar leads en el CRM, responder y hacer seguimiento por WhatsApp o email, generar reportes, sincronizar planillas con tus sistemas o procesar formularios. Se arman con herramientas como n8n conectadas a las aplicaciones que ya usás."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Con qué tecnologías y herramientas trabajan?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Desarrollo web full-stack, automatizaciones con n8n, integraciones con Kommo, WhatsApp, pasarelas de pago y las APIs que use tu negocio. Elegimos el stack según el problema a resolver, no al revés."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Trabajan con empresas fuera de Argentina?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Trabajamos de forma remota con clientes de toda Latinoamérica: las reuniones se coordinan por videollamada y el seguimiento del proyecto es online, con entregas visibles cada semana."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿El código queda para el cliente?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. El código del proyecto es del cliente y se entrega en su propio repositorio, junto con los accesos a la infraestructura. No trabajamos con esquemas que te dejen atado a nosotros para poder seguir usando tu sistema."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Dan soporte después del lanzamiento?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Después del deploy quedamos disponibles para ajustes, mejoras y nuevas funcionalidades. Se puede acordar un esquema de soporte mensual o trabajar por bloques de horas, según lo que necesite el proyecto."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo empiezo un proyecto con Zoly?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Escribinos a hola@zoly.com.ar o completá el formulario de contacto contando qué necesitás. Coordinamos una consulta sin compromiso para entender el problema y te respondemos dentro de las 24 horas hábiles con los próximos pasos."
+      }
+    }
+  ]
 }
 </script>
 <style>
@@ -229,6 +348,21 @@
   .quote .who .meta b{display:block;font-family:var(--grid);font-weight:500;font-size:14.5px}
   .quote .who .meta span{font-size:13px;color:var(--muted-2)}
 
+  /* FAQ */
+  .faq{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 20px;align-items:start}
+  .faq details{border:1px solid var(--line);border-radius:14px;background:var(--ink-3);padding:0 22px;transition:border-color .2s}
+  .faq details[open]{border-color:var(--line-2)}
+  .faq details:hover{border-color:var(--line-2)}
+  .faq summary{list-style:none;cursor:pointer;display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:19px 0}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary h3{font-size:16.5px;font-weight:500;line-height:1.35;transition:color .18s}
+  .faq summary:hover h3{color:var(--mint)}
+  .faq summary .sign{flex:none;width:16px;height:16px;margin-top:3px;stroke:var(--mint);fill:none;stroke-width:2.2;stroke-linecap:round;transition:transform .25s ease}
+  .faq details[open] summary .sign{transform:rotate(135deg)}
+  .faq .ans{color:var(--muted);font-size:15px;padding:0 0 20px;max-width:62ch}
+  .faq-foot{margin-top:28px;font-size:15px;color:var(--muted)}
+  .faq-foot a{color:var(--mint);border-bottom:1px solid rgba(0,196,140,.35)}
+
   /* CONTACT */
   .cta{position:relative;overflow:hidden;border:1px solid var(--line-2);border-radius:26px;
     background:linear-gradient(180deg,var(--ink-3),var(--ink-2));padding:56px}
@@ -268,6 +402,7 @@
 
   @media(max-width:960px){
     .cards,.work,.quotes{grid-template-columns:repeat(2,1fr)}
+    .faq{grid-template-columns:1fr}
     .steps{grid-template-columns:repeat(2,1fr)}
     .cta-inner{grid-template-columns:1fr;gap:34px}
   }
@@ -301,6 +436,7 @@
       <a href="#servicios">Servicios</a>
       <a href="#proceso">Proceso</a>
       <a href="#trabajos">Demos</a>
+      <a href="#faq">FAQ</a>
       <a href="#contacto">Contacto</a>
     </nav>
     <div class="nav-cta">
@@ -454,6 +590,80 @@
   </div>
 </section>
 
+<!-- FAQ -->
+<section class="sec" id="faq" style="background:var(--ink-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Preguntas frecuentes</span>
+      <h2>Lo que nos preguntan antes de empezar.</h2>
+      <p>Plazos, costos, tecnologías y cómo trabajamos. Si te queda una duda que no está acá, escribinos y te la respondemos.</p>
+    </div>
+    <div class="faq">
+      <details class="reveal" open>
+        <summary><h3>¿Qué hace Zoly?</h3>
+          <svg class="sign" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v10M3 8h10"/></svg>
+        </summary>
+        <p class="ans">Zoly es un equipo argentino de desarrollo de software a medida. Construimos MVPs, CRMs, integraciones entre sistemas, bots de WhatsApp y automatizaciones de procesos: desde el primer boceto hasta el deploy en producción, con código propio y sin plantillas genéricas.</p>
+      </details>
+      <details class="reveal">
+        <summary><h3>¿Cuánto tarda desarrollar un MVP?</h3>
+          <svg class="sign" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v10M3 8h10"/></svg>
+        </summary>
+        <p class="ans">Nuestro objetivo es tener un MVP funcional en producción en 30 días. El plazo real depende del alcance que definimos en la etapa de descubrimiento: recortamos a lo mínimo que sirve para validar la idea con usuarios reales, y el resto se construye después, ya sobre datos concretos.</p>
+      </details>
+      <details class="reveal">
+        <summary><h3>¿Cuánto cuesta desarrollar un software a medida?</h3>
+          <svg class="sign" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v10M3 8h10"/></svg>
+        </summary>
+        <p class="ans">Depende del alcance, y por eso trabajamos con presupuesto cerrado por proyecto. Después de una primera consulta sin cargo te pasamos un plan con etapas, entregables y precio, para que sepas desde el día uno qué incluye y qué no.</p>
+      </details>
+      <details class="reveal">
+        <summary><h3>¿Por qué un CRM a medida y no uno enlatado?</h3>
+          <svg class="sign" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v10M3 8h10"/></svg>
+        </summary>
+        <p class="ans">Un CRM enlatado te obliga a adaptar tu proceso de ventas al software y a pagar licencias por usuario para siempre. Uno a medida se arma sobre tu pipeline real, integra las herramientas que ya usás y no tiene costo por asiento. Si tu operación entra bien en una plataforma estándar te lo decimos: también implementamos y configuramos Kommo.</p>
+      </details>
+      <details class="reveal">
+        <summary><h3>¿Qué es la automatización de procesos y qué puedo automatizar?</h3>
+          <svg class="sign" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v10M3 8h10"/></svg>
+        </summary>
+        <p class="ans">Es reemplazar tareas manuales y repetitivas por flujos que se ejecutan solos: cargar leads en el CRM, responder y hacer seguimiento por WhatsApp o email, generar reportes, sincronizar planillas con tus sistemas o procesar formularios. Se arman con herramientas como n8n conectadas a las aplicaciones que ya usás.</p>
+      </details>
+      <details class="reveal">
+        <summary><h3>¿Con qué tecnologías y herramientas trabajan?</h3>
+          <svg class="sign" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v10M3 8h10"/></svg>
+        </summary>
+        <p class="ans">Desarrollo web full-stack, automatizaciones con n8n, integraciones con Kommo, WhatsApp, pasarelas de pago y las APIs que use tu negocio. Elegimos el stack según el problema a resolver, no al revés.</p>
+      </details>
+      <details class="reveal">
+        <summary><h3>¿Trabajan con empresas fuera de Argentina?</h3>
+          <svg class="sign" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v10M3 8h10"/></svg>
+        </summary>
+        <p class="ans">Sí. Trabajamos de forma remota con clientes de toda Latinoamérica: las reuniones se coordinan por videollamada y el seguimiento del proyecto es online, con entregas visibles cada semana.</p>
+      </details>
+      <details class="reveal">
+        <summary><h3>¿El código queda para el cliente?</h3>
+          <svg class="sign" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v10M3 8h10"/></svg>
+        </summary>
+        <p class="ans">Sí. El código del proyecto es del cliente y se entrega en su propio repositorio, junto con los accesos a la infraestructura. No trabajamos con esquemas que te dejen atado a nosotros para poder seguir usando tu sistema.</p>
+      </details>
+      <details class="reveal">
+        <summary><h3>¿Dan soporte después del lanzamiento?</h3>
+          <svg class="sign" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v10M3 8h10"/></svg>
+        </summary>
+        <p class="ans">Sí. Después del deploy quedamos disponibles para ajustes, mejoras y nuevas funcionalidades. Se puede acordar un esquema de soporte mensual o trabajar por bloques de horas, según lo que necesite el proyecto.</p>
+      </details>
+      <details class="reveal">
+        <summary><h3>¿Cómo empiezo un proyecto con Zoly?</h3>
+          <svg class="sign" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v10M3 8h10"/></svg>
+        </summary>
+        <p class="ans">Escribinos a hola@zoly.com.ar o completá el formulario de contacto contando qué necesitás. Coordinamos una consulta sin compromiso para entender el problema y te respondemos dentro de las 24 horas hábiles con los próximos pasos.</p>
+      </details>
+    </div>
+    <p class="faq-foot reveal">¿Tenés otra pregunta? <a href="#contacto">Escribinos y la respondemos</a>.</p>
+  </div>
+</section>
+
 <!-- CONTACTO -->
 <section class="sec" id="contacto">
   <div class="wrap">
@@ -519,6 +729,7 @@
         <h4>Empresa</h4>
         <a href="#proceso">Proceso</a>
         <a href="#trabajos">Demos</a>
+        <a href="#faq">Preguntas frecuentes</a>
         <a href="#contacto">Contacto</a>
       </div>
     </div>

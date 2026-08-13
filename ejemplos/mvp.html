@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Zoly · Demo MVP — Portal de turnos</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='512' height='512' viewBox='0 0 512 512'%3E%3Crect x='16' y='16' width='480' height='480' rx='118' fill='%230B0D10'/%3E%3Cpath d='M166 178 H346 L166 334 H346' stroke='%23F4F3EF' stroke-width='44' stroke-linecap='square' stroke-linejoin='miter'/%3E%3Cpath d='M166 178 H346' stroke='%2300C48C' stroke-width='44' stroke-linecap='square'/%3E%3C/svg%3E" />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{--ink:#0B0D10;--ink-2:#111419;--ink-3:#161a21;--line:rgba(244,243,239,.10);--line-2:rgba(244,243,239,.16);--mint:#00C48C;--mint-soft:rgba(0,196,140,.14);--bone:#F4F3EF;--muted:#9aa3ad;--muted-2:#6f7883;--grid:'Space Grotesk',sans-serif;--body:'Inter',sans-serif}
+  *{box-sizing:border-box}body{margin:0;background:var(--ink);color:var(--bone);font-family:var(--body);-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}h1,h2,h3{font-family:var(--grid);margin:0;letter-spacing:-.02em}
+  .demobar{background:var(--mint);color:var(--ink);font-family:var(--grid);font-weight:600;font-size:13.5px;padding:9px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .demobar a{display:inline-flex;align-items:center;gap:7px;background:rgba(11,13,16,.16);padding:5px 12px;border-radius:8px}
+  .top{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;border-bottom:1px solid var(--line)}
+  .brand{display:flex;align-items:center;gap:11px}.brand svg{width:26px;height:26px}
+  .brand .w{font-family:var(--grid);font-weight:600;font-size:20px;position:relative}
+  .brand .w::after{content:"";position:absolute;right:-9px;bottom:5px;width:5px;height:5px;border-radius:50%;background:var(--mint)}
+  .pill{font-family:var(--grid);font-size:12.5px;color:var(--muted-2);border:1px solid var(--line);border-radius:20px;padding:5px 12px}
+  .wrap{max-width:1080px;margin:0 auto;padding:34px 24px}
+  .head{margin-bottom:26px}.head .eyebrow{font-family:var(--grid);font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--mint)}
+  .head h1{font-size:30px;margin:12px 0 6px;font-weight:700}.head p{color:var(--muted);font-size:15px}
+  .layout{display:grid;grid-template-columns:1fr 340px;gap:22px;align-items:start}
+  .panel{background:linear-gradient(180deg,var(--ink-3),var(--ink-2));border:1px solid var(--line);border-radius:16px;padding:22px}
+  .panel h2{font-size:17px;margin-bottom:16px}
+  .svcs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px}
+  .svcs button{font-family:var(--grid);font-weight:500;font-size:13.5px;background:var(--ink-2);border:1px solid var(--line-2);color:var(--bone);border-radius:10px;padding:9px 15px;cursor:pointer;transition:.16s}
+  .svcs button.on{background:var(--mint);color:var(--ink);border-color:var(--mint)}
+  .cal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+  .cal-head b{font-family:var(--grid);font-size:15px}
+  .cal-head button{background:var(--ink-2);border:1px solid var(--line-2);color:var(--bone);width:30px;height:30px;border-radius:8px;cursor:pointer}
+  .days{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+  .dow{text-align:center;font-size:11px;color:var(--muted-2);font-family:var(--grid);padding-bottom:4px}
+  .day{aspect-ratio:1;border:1px solid var(--line);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:13.5px;cursor:pointer;color:var(--bone);background:var(--ink-2);transition:.14s}
+  .day.mut{color:var(--muted-2);opacity:.4;cursor:default}
+  .day.on{background:var(--mint);color:var(--ink);border-color:var(--mint);font-weight:600}
+  .day:not(.mut):not(.on):hover{border-color:var(--mint)}
+  .slots{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:6px}
+  .slot{font-family:var(--grid);font-weight:500;font-size:13.5px;background:var(--ink-2);border:1px solid var(--line-2);color:var(--bone);border-radius:9px;padding:10px 0;text-align:center;cursor:pointer;transition:.14s}
+  .slot.on{background:var(--mint);color:var(--ink);border-color:var(--mint)}
+  .slot.taken{opacity:.32;cursor:not-allowed;text-decoration:line-through}
+  .summary .line{display:flex;justify-content:space-between;font-size:14px;padding:10px 0;border-bottom:1px solid var(--line)}
+  .summary .line span:first-child{color:var(--muted)}
+  .summary .line b{font-family:var(--grid);font-weight:600}
+  .cta{width:100%;font-family:var(--grid);font-weight:600;font-size:15px;background:var(--mint);color:var(--ink);border:none;border-radius:11px;padding:13px;cursor:pointer;margin-top:18px}
+  .cta:disabled{opacity:.4;cursor:not-allowed}
+  .done{text-align:center;padding:8px 0}.done .ic{width:54px;height:54px;border-radius:50%;background:var(--mint-soft);border:1px solid rgba(0,196,140,.35);display:flex;align-items:center;justify-content:center;margin:6px auto 14px;color:var(--mint);font-size:26px}
+  .done h3{font-size:18px}.done p{color:var(--muted);font-size:14px;margin-top:8px}
+  .done button{margin-top:16px;background:transparent;border:1px solid var(--line-2);color:var(--bone);border-radius:10px;padding:9px 16px;font-family:var(--grid);cursor:pointer}
+  @media(max-width:840px){.layout{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="demobar">
+  <span>◆ Demo interactiva — MVP de Zoly · reservá un turno de ejemplo</span>
+  <a href="../index.html">← Volver a zoly.com.ar</a>
+</div>
+<div class="top">
+  <a class="brand" href="../index.html">
+    <svg viewBox="0 0 512 512" fill="none"><path d="M150 156 H362 L150 356 H362" stroke="#00C48C" stroke-width="58" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span class="w">zoly</span>
+  </a>
+  <span class="pill">Clínica Nova · portal de turnos</span>
+</div>
+
+<div class="wrap">
+  <div class="head">
+    <span class="eyebrow">MVP · Desarrollo a medida</span>
+    <h1>Reservá tu turno online</h1>
+    <p>Ejemplo de un MVP construido por Zoly: elegí servicio, día y horario. Todo en tiempo real.</p>
+  </div>
+
+  <div class="layout">
+    <div class="panel" id="booking">
+      <h2>1 · Elegí el servicio</h2>
+      <div class="svcs" id="svcs">
+        <button class="on" data-d="30">Consulta general</button>
+        <button data-d="45">Control clínico</button>
+        <button data-d="60">Estudio + turno</button>
+      </div>
+      <h2>2 · Elegí el día</h2>
+      <div class="cal-head"><b id="monthlbl">Agosto 2026</b><span></span></div>
+      <div class="days" id="dow"></div>
+      <div class="days" id="days" style="margin-top:6px"></div>
+      <h2 style="margin-top:22px">3 · Elegí el horario</h2>
+      <div class="slots" id="slots"></div>
+    </div>
+
+    <div class="panel summary" id="side">
+      <h2>Tu reserva</h2>
+      <div id="sumbody">
+        <div class="line"><span>Servicio</span><b id="s-svc">Consulta general</b></div>
+        <div class="line"><span>Duración</span><b id="s-dur">30 min</b></div>
+        <div class="line"><span>Día</span><b id="s-day">—</b></div>
+        <div class="line"><span>Hora</span><b id="s-time">—</b></div>
+        <button class="cta" id="confirm" disabled onclick="confirmBooking()">Confirmar turno</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const state={svc:'Consulta general',dur:30,day:null,time:null};
+  // services
+  document.querySelectorAll('#svcs button').forEach(b=>b.onclick=()=>{
+    document.querySelectorAll('#svcs button').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on');state.svc=b.textContent;state.dur=+b.dataset.d;
+    document.getElementById('s-svc').textContent=state.svc;
+    document.getElementById('s-dur').textContent=state.dur+' min';
+  });
+  // calendar (Aug 2026, starts Saturday -> index; simplified)
+  const dows=['Do','Lu','Ma','Mi','Ju','Vi','Sá'];
+  document.getElementById('dow').innerHTML=dows.map(d=>`<div class="dow">${d}</div>`).join('');
+  const first=6; // Aug 1 2026 is Saturday
+  const daysN=31, cont=document.getElementById('days');
+  let html='';
+  for(let i=0;i<first;i++)html+=`<div class="day mut"></div>`;
+  for(let d=1;d<=daysN;d++){const past=d<13;html+=`<div class="day ${past?'mut':''}" ${past?'':`data-d="${d}"`}>${d}</div>`;}
+  cont.innerHTML=html;
+  cont.querySelectorAll('.day[data-d]').forEach(el=>el.onclick=()=>{
+    cont.querySelectorAll('.day').forEach(x=>x.classList.remove('on'));
+    el.classList.add('on');state.day=+el.dataset.d;state.time=null;
+    document.getElementById('s-day').textContent=state.day+' ago 2026';
+    document.getElementById('s-time').textContent='—';
+    renderSlots();check();
+  });
+  function renderSlots(){
+    const times=['09:00','09:45','10:30','11:15','15:00','15:45','16:30','17:15','18:00'];
+    const taken=[1,4,6]; // fake occupied
+    document.getElementById('slots').innerHTML=times.map((t,i)=>
+      `<div class="slot ${taken.includes(i)?'taken':''}" ${taken.includes(i)?'':`data-t="${t}"`}>${t}</div>`).join('');
+    document.querySelectorAll('#slots .slot[data-t]').forEach(el=>el.onclick=()=>{
+      document.querySelectorAll('#slots .slot').forEach(x=>x.classList.remove('on'));
+      el.classList.add('on');state.time=el.dataset.t;
+      document.getElementById('s-time').textContent=state.time;check();
+    });
+  }
+  function check(){document.getElementById('confirm').disabled=!(state.day&&state.time);}
+  function confirmBooking(){
+    document.getElementById('sumbody').innerHTML=
+      `<div class="done"><div class="ic">✓</div><h3>¡Turno confirmado!</h3>
+       <p>${state.svc}<br>${state.day} de agosto · ${state.time} hs</p>
+       <p style="font-size:12.5px;color:var(--muted-2);margin-top:10px">Te enviamos la confirmación por email y WhatsApp automáticamente.</p>
+       <button onclick="location.reload()">Reservar otro turno</button></div>`;
+  }
+  renderSlots();
+</script>
+</body>
+</html>

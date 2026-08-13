@@ -469,7 +469,7 @@
             <a href="https://zoly.com.ar"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18"/></svg>zoly.com.ar</a>
           </div>
         </div>
-        <form onsubmit="return sendForm(event)">
+        <form id="contactForm" onsubmit="return sendForm(event)">
           <div class="row">
             <div><label for="nombre">Nombre</label><input id="nombre" name="nombre" required placeholder="Tu nombre" /></div>
             <div><label for="email">Email</label><input id="email" name="email" type="email" required placeholder="tu@email.com" /></div>
@@ -486,8 +486,9 @@
             </select>
           </div>
           <div><label for="msg">Contanos tu proyecto</label><textarea id="msg" name="msg" placeholder="¿Qué querés construir?"></textarea></div>
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
           <button type="submit" class="btn btn-primary">Enviar consulta</button>
-          <p class="form-note">Te contactamos dentro de las 24 hs hábiles.</p>
+          <p class="form-note" id="formNote">Te contactamos dentro de las 24 hs hábiles.</p>
         </form>
       </div>
     </div>
@@ -547,12 +548,43 @@
     c.style.setProperty('--mx', (e.clientX - r.left) + 'px');
     c.style.setProperty('--my', (e.clientY - r.top) + 'px');
   }));
-  // form (front-end only)
-  function sendForm(e){
+  // form → envía directo por FormSubmit (sin backend propio) a hola@zoly.com.ar
+  async function sendForm(e){
     e.preventDefault();
-    const f = e.target, email = 'hola@zoly.com.ar';
-    const body = encodeURIComponent(`Nombre: ${f.nombre.value}\nEmail: ${f.email.value}\nServicio: ${f.servicio.value}\n\n${f.msg.value}`);
-    window.location.href = `mailto:${email}?subject=${encodeURIComponent('Consulta desde zoly.com.ar')}&body=${body}`;
+    const f = e.target;
+    const note = document.getElementById('formNote');
+    const btn = f.querySelector('button[type=submit]');
+    if (f._honey && f._honey.value) return false; // honeypot anti-spam
+    const original = btn.textContent;
+    btn.disabled = true; btn.textContent = 'Enviando…';
+    note.style.color = 'var(--muted-2)';
+    try {
+      const res = await fetch('https://formsubmit.co/ajax/hola@zoly.com.ar', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          nombre: f.nombre.value,
+          email: f.email.value,
+          servicio: f.servicio.value,
+          mensaje: f.msg.value,
+          _subject: 'Nueva consulta desde zoly.com.ar',
+          _template: 'table'
+        })
+      });
+      const data = await res.json();
+      if (res.ok && (data.success === true || data.success === 'true')) {
+        f.reset();
+        note.textContent = '¡Gracias! Recibimos tu consulta. Te respondemos dentro de las 24 hs hábiles.';
+        note.style.color = 'var(--mint)';
+      } else {
+        throw new Error(data.message || 'error');
+      }
+    } catch (err) {
+      note.textContent = 'No pudimos enviar el mensaje. Escribinos a hola@zoly.com.ar y te respondemos.';
+      note.style.color = '#ff6b6b';
+    } finally {
+      btn.disabled = false; btn.textContent = original;
+    }
     return false;
   }
 </script>

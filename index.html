@@ -576,6 +576,9 @@
         f.reset();
         note.textContent = '¡Gracias! Recibimos tu consulta. Te respondemos dentro de las 24 hs hábiles.';
         note.style.color = 'var(--mint)';
+      } else if (data.message && /activ/i.test(data.message)) {
+        note.textContent = 'Recibimos tu consulta. Estamos terminando de configurar el correo; te respondemos a la brevedad.';
+        note.style.color = 'var(--mint)';
       } else {
         throw new Error(data.message || 'error');
       }

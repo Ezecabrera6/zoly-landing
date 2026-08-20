@@ -1,0 +1,9 @@
+# Nada de esto se publica en zoly.com.ar ni se sube a GitHub
+_privado/
+*.xlsx
+*.url
+carroucel 3/
+carroucel 3.zip
+
+# excepcion: el brand kit si se publica
+!zoly-brand-kit.zip

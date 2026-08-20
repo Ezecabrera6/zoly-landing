@@ -892,8 +892,10 @@
       const data = await res.json();
       if (res.ok && (data.success === true || data.success === 'true')) {
         f.reset();
-        note.textContent = '¡Gracias! Recibimos tu consulta. Te respondemos dentro de las 24 hs hábiles.';
+        note.textContent = '¡Gracias! Recibimos tu consulta.';
         note.style.color = 'var(--mint)';
+        window.location.href = '/gracias.html';
+        return false;
       } else if (data.message && /activ/i.test(data.message)) {
         note.textContent = 'Recibimos tu consulta. Estamos terminando de configurar el correo; te respondemos a la brevedad.';
         note.style.color = 'var(--mint)';

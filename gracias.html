@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Consulta recibida — Zoly</title>
+<meta name="description" content="Recibimos tu consulta. Te respondemos en menos de 1 hora en horario laboral." />
+<meta name="robots" content="noindex, follow" />
+<link rel="canonical" href="https://zoly.com.ar/gracias.html" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:#0B0D10; --ink-2:#111419; --ink-3:#161a21;
+    --line:rgba(244,243,239,.10); --line-2:rgba(244,243,239,.16);
+    --mint:#00C48C; --mint-soft:rgba(0,196,140,.14);
+    --bone:#F4F3EF; --muted:#9aa3ad; --muted-2:#7d8794;
+    --radius:18px;
+    --grid:'Space Grotesk',system-ui,sans-serif;
+    --body:'Inter',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ink);color:var(--bone);font-family:var(--body);
+    -webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column}
+  a{color:inherit}
+  .bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+  .bg .glow{position:absolute;top:-220px;left:50%;transform:translateX(-50%);
+    width:760px;height:760px;border-radius:50%;
+    background:radial-gradient(circle,rgba(0,196,140,.16),transparent 62%);filter:blur(10px)}
+  .bg .grid{position:absolute;inset:0;opacity:.5;
+    background:linear-gradient(var(--line) 1px,transparent 1px) 0 0/100% 46px}
+
+  header{position:relative;z-index:1;padding:26px 24px;border-bottom:1px solid var(--line)}
+  .brand{display:flex;align-items:center;gap:10px;max-width:1160px;margin:0 auto;
+    font-family:var(--grid);font-weight:700;font-size:20px;text-decoration:none;letter-spacing:-.02em}
+  .brand .z{width:30px;height:30px;border-radius:9px;background:var(--mint);color:var(--ink);
+    display:flex;align-items:center;justify-content:center;font-size:17px}
+  .brand .dot{color:var(--mint)}
+
+  main{position:relative;z-index:1;flex:1;display:flex;align-items:center;justify-content:center;padding:64px 24px}
+  .box{max-width:640px;width:100%;text-align:center}
+  .tick{width:78px;height:78px;border-radius:50%;margin:0 auto 30px;
+    background:var(--mint-soft);border:1px solid rgba(0,196,140,.32);
+    display:flex;align-items:center;justify-content:center}
+  .tick svg{width:38px;height:38px;stroke:var(--mint);fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+  h1{font-family:var(--grid);font-weight:700;letter-spacing:-.03em;
+    font-size:clamp(30px,5vw,46px);line-height:1.1;margin:0 0 18px}
+  h1 .accent{color:var(--mint)}
+  .lead{color:var(--muted);font-size:17px;line-height:1.65;margin:0 auto 34px;max-width:520px}
+
+  .next{border:1px solid var(--line);border-radius:var(--radius);background:var(--ink-2);
+    padding:26px 28px;text-align:left;margin-bottom:34px}
+  .next h2{font-family:var(--grid);font-size:13px;font-weight:600;letter-spacing:.10em;
+    text-transform:uppercase;color:var(--muted-2);margin:0 0 18px}
+  .next ol{margin:0;padding-left:22px;color:var(--muted);font-size:15.5px;line-height:1.6}
+  .next li{margin-bottom:11px}
+  .next li:last-child{margin-bottom:0}
+  .next b{color:var(--bone);font-weight:600}
+
+  .actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:9px;padding:14px 24px;border-radius:12px;
+    text-decoration:none;font-weight:600;font-size:15px;transition:transform .2s,border-color .2s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-primary{background:var(--mint);color:var(--ink);box-shadow:0 8px 30px rgba(0,196,140,.25)}
+  .btn-ghost{border:1px solid var(--line-2);color:var(--bone)}
+  .btn svg{width:18px;height:18px;fill:currentColor}
+
+  footer{position:relative;z-index:1;border-top:1px solid var(--line);padding:24px;
+    text-align:center;color:var(--muted-2);font-size:13.5px}
+  footer a{color:var(--muted);text-decoration:none}
+  footer a:hover{color:var(--mint)}
+
+  @media (max-width:640px){
+    main{padding:48px 20px}
+    .next{padding:22px 20px}
+  }
+</style>
+</head>
+<body>
+<div class="bg"><div class="grid"></div><div class="glow"></div></div>
+
+<header>
+  <a class="brand" href="/">
+    <span class="z">z</span><span>zoly<span class="dot">.</span></span>
+  </a>
+</header>
+
+<main>
+  <div class="box">
+    <div class="tick">
+      <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+    </div>
+
+    <h1>Listo, ya nos <span class="accent">llegó</span>.</h1>
+    <p class="lead">Recibimos tu consulta. La leemos nosotros, no un bot, y te contestamos en menos de una hora dentro del horario laboral.</p>
+
+    <div class="next">
+      <h2>Qué pasa ahora</h2>
+      <ol>
+        <li>Miramos lo que nos contaste y, si hace falta, te preguntamos dos o tres cosas por mail.</li>
+        <li>Si tiene sentido para los dos, coordinamos una <b>llamada de 15 minutos</b>. Sin presentación de ventas: entender qué necesitás.</li>
+        <li>Después de esa llamada te mandamos el <b>presupuesto cerrado en 24 horas</b>, con alcance y plazo por escrito.</li>
+      </ol>
+    </div>
+
+    <div class="actions">
+      <a class="btn btn-primary" href="https://wa.me/5491178263483?text=Hola%20Zoly%2C%20acabo%20de%20mandar%20una%20consulta%20desde%20la%20web." target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.2-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.5-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5v-.5c0-.2-.7-1.6-.9-2.2-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.4M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2m0 18.2c-1.6 0-3.2-.4-4.5-1.2l-.3-.2-3.1.8.8-3-.2-.3a8.2 8.2 0 1 1 7.3 3.9"/></svg>
+        Escribinos por WhatsApp
+      </a>
+      <a class="btn btn-ghost" href="/#trabajos">Mientras tanto, probá las demos</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <a href="/">Volver a zoly.com.ar</a>
+</footer>
+
+</body>
+</html>

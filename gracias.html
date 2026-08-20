@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-43TT428EYJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-43TT428EYJ');
+</script>
+
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Consulta recibida — Zoly</title>
@@ -125,5 +134,23 @@
   <a href="/">Volver a zoly.com.ar</a>
 </footer>
 
+<script>
+(function(){
+  function ev(name, params){ if (typeof gtag === 'function') { gtag('event', name, params || {}); } }
+  document.addEventListener('click', function(e){
+    var a = e.target && e.target.closest ? e.target.closest('a') : null;
+    if (!a || !a.href) return;
+    var h = a.href;
+    if (h.indexOf('cal.com/zoly.com.ar') !== -1)      ev('agenda_click',   {link_url: h});
+    else if (h.indexOf('wa.me/') !== -1)              ev('whatsapp_click', {link_url: h});
+    else if (/\/ejemplos\/(crm|bot|mvp)\.html/.test(h)) ev('demo_click',  {link_url: h});
+  }, true);
+})();
+</script>
+<script>
+  window.addEventListener('load', function(){
+    if (typeof gtag === 'function') { gtag('event', 'generate_lead', {source: 'formulario_web'}); }
+  });
+</script>
 </body>
 </html>

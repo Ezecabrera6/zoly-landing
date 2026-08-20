@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-43TT428EYJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-43TT428EYJ');
+</script>
+
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Demo Bot de WhatsApp — Zoly | Asistente que califica y agenda</title>
@@ -123,5 +132,18 @@
     <a class="g" href="../index.html#contacto">Contanos tu proyecto</a>
   </div>
 </section>
+<script>
+(function(){
+  function ev(name, params){ if (typeof gtag === 'function') { gtag('event', name, params || {}); } }
+  document.addEventListener('click', function(e){
+    var a = e.target && e.target.closest ? e.target.closest('a') : null;
+    if (!a || !a.href) return;
+    var h = a.href;
+    if (h.indexOf('cal.com/zoly.com.ar') !== -1)      ev('agenda_click',   {link_url: h});
+    else if (h.indexOf('wa.me/') !== -1)              ev('whatsapp_click', {link_url: h});
+    else if (/\/ejemplos\/(crm|bot|mvp)\.html/.test(h)) ev('demo_click',  {link_url: h});
+  }, true);
+})();
+</script>
 </body>
 </html>
